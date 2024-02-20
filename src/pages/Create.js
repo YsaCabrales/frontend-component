@@ -23,7 +23,7 @@ const Create = () => {
 
 
 
-		const response = await fetch("http://localhost:4000/api/posts", {
+		const response = await fetch("/api/posts", {
 			method: "POST",
 			body: JSON.stringify(blog),
 			headers: {

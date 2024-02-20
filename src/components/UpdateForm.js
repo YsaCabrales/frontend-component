@@ -16,7 +16,7 @@ const UpdateForm = ({ id, initialTitle, initialDescription, initialAuthor, onUpd
 	}, []);
 
 	const fetchBlogs = () => {
-		axios.get("http://localhost:4000/api/posts").then((res) => {
+		axios.get("/api/posts").then((res) => {
 			setBlogs(res.data);
 			console.log(res.data);
 		});
@@ -26,7 +26,7 @@ const UpdateForm = ({ id, initialTitle, initialDescription, initialAuthor, onUpd
 		if (!user) {
 			return;
 		}
-		fetch(`http://localhost:4000/api/posts/${id}`, {
+		fetch(`/api/posts/${id}`, {
 			method: "PATCH",
 			headers: {
 				"Content-Type": "application/json",
