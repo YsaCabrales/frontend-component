@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles/Create.css";
+import { useAuthContext } from "../hooks/useAuthContext";
 
 const Create = () => {
+	const { user } = useAuthContext();
 	const [title, setTitle] = useState("");
-	const [body, setBody] = useState("");
+	const [description, setDescription] = useState("");
 	const [author, setAuthor] = useState("");
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
@@ -12,7 +14,12 @@ const Create = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const blog = { title, body, author };
+
+		if (!user) {
+			setError("You must be logged in to create a post");
+			return;
+		}
+		const blog = { title, description, author };
 
 
 
@@ -21,6 +28,7 @@ const Create = () => {
 			body: JSON.stringify(blog),
 			headers: {
 				"Content-Type": "application/json",
+				Authorization: `Bearer ${user.token}`,
 			},
 		});
 		
@@ -34,26 +42,13 @@ const Create = () => {
 
 		if (response.ok) {
 			setTitle("");
-			setBody("");
+			setDescription("");
 			setAuthor("	");
 			setError(null);
 			console.log("new blog added");
 			setIsLoading(false);
 			navigate("/");
 		}
-
-		
-		// setIsLoading(true);
-
-		// fetch("http://localhost:8000/blogs/", {
-		// 	method: "POST",
-		// 	headers: { "Content-Type": "application/json" },
-		// 	body: JSON.stringify(blog),
-		// }).then(() => {
-		// 	console.log("new blog added");
-		// 	setIsLoading(false);
-		// 	navigate("/");
-		// });
 	};
 
 	return (
@@ -63,7 +58,7 @@ const Create = () => {
 				<label>Blog Title: </label>
 				<input type="text" required value={title} onChange={(e) => setTitle(e.target.value)} />
 				<label>Blog body: </label>
-				<textarea required value={body} onChange={(e) => setBody(e.target.value)}></textarea>
+				<textarea required value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
 				<label>Blog author: </label>
 				<input type="text" required value={author} onChange={(e) => setAuthor(e.target.value)} />
 				{!isLoading && <button>Add Blog</button>}
