@@ -12,12 +12,12 @@ const Home = () => {
 
 	useEffect(() => {
 		const fetchPosts = async () => {
-			const response = await fetch("http://localhost:4000/api/posts");
+			const response = await fetch("/api/posts");
 			const json = await response.json();
 
 			if (response.ok) {
 				dispatch({ type: "SET_BLOGS", payload: json });
-			}
+			} 
 		};
 
 		fetchPosts();

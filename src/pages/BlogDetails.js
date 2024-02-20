@@ -19,7 +19,7 @@ const BlogDetails = () => {
 	}, []);
 
 	const fetchPosts = () => {
-		axios.get(`http://localhost:4000/api/posts/${id}`).then((res) => {
+		axios.get(`/api/posts/${id}`).then((res) => {
 			setBlog(res.data);
 			// console.log(res.data);
 		});
@@ -38,7 +38,7 @@ const BlogDetails = () => {
 		if (!user) {
 			return;
 		}
-		const response = await fetch(`http://localhost:4000/api/posts/${id}`, {
+		const response = await fetch(`/api/posts/${id}`, {
 			method: "DELETE",
 			headers: {
 				Authorization: `Bearer ${user.token}`,

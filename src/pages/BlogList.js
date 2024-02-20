@@ -6,7 +6,7 @@ const BlogList = ({ blog }) => {
 	const { dispatch } = useBlogsContext();
 
 	const handleClick = async () => {
-		const response = await fetch("http://localhost:4000/api/posts/" + blog._id, {
+		const response = await fetch("/api/posts/" + blog._id, {
 			method: "GET",
 		});
 		const json = await response.json();
