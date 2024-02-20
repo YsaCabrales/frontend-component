@@ -25,7 +25,10 @@ const Home = () => {
 
 	return (
 		<div className="home">
-			<div className="bloglist">{blogs && blogs.map((blog) => <BlogList blog={blog} key={blog._id} />)}</div>
+			<h2>Blogs</h2>
+			<div className="blog-list">
+				{blogs && blogs.map((blog) => <BlogList blog={blog} key={blog._id} />)}
+			</div>
 		</div>
   )
  
