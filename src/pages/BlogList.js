@@ -19,12 +19,13 @@ const BlogList = ({ blog }) => {
 	return (
 		<div className="blog-details">
 			<Link to={`/posts/${blog._id}`}>
-				<h4 onClick={handleClick}>Title: {blog.title}</h4>
+				<h4 onClick={handleClick} id="blog-title">{blog.title}</h4>
 			</Link>
-			<p>Author: {blog.author}</p>
-			<p>Description: {blog.description}</p>
-			<p>Likes: {blog.likes}</p>
-			<p>Comments: {blog.comments}</p>
+			<p>{blog.author}</p>
+			<br />
+			<p className="truncate">{blog.description}</p>
+
+			<p>Likes: {blog.likes} | Comments: {blog.comments}</p>
 		</div>
 	);
 };

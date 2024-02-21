@@ -1,10 +1,9 @@
 .home {
 }
 
-.blog-preview {
-	padding: 10px 16px;
-	margin: 20px 0;
-	border-bottom: 1px solid #fafafa;
+.blog-list {
+	display: grid;
+	grid-template: auto auto / 2fr 2fr
 }
 
 .featured-container {
