@@ -13,7 +13,10 @@ const BlogDetails = () => {
 	const { id } = useParams();
 	const [blog, setBlog] = useState([]);
 	const [selectedBlog, setSelectedBlog] = useState(null);
+	const [isVisible, setIsVisible] = useState(true);
 	const navigate = useNavigate();
+
+	
 
 	useEffect(() => {
 		fetchPosts();
@@ -27,16 +30,19 @@ const BlogDetails = () => {
 	};
 
 	const handleUpdateClick = () => {
+		setIsVisible(!isVisible);
 		setSelectedBlog(blog);
 	};
 
 	const handleUpdateDone = () => {
+		setIsVisible(!isVisible);
 		setSelectedBlog(null);
 		fetchPosts();
 	};
 
 	const handleDelete = async () => {
 		if (!user) {
+			alert("You must be logged in to delete.")
 			return;
 		}
 		const response = await fetch(`/api/posts/${id}`, {
@@ -64,13 +70,21 @@ const BlogDetails = () => {
 					onUpdate={handleUpdateDone}
 				/>
 			)}
-			<h4>Title: {blog.title}</h4>
-			<p>Author: {blog.author}</p>
-			<p>Description: {blog.description}</p>
+			<h4>{blog.title}</h4>
+			<p>{blog.author}</p>
+
+			<br />
+
+			<p>{blog.description}</p>
 			<p>Likes: {blog.likes}</p>
 			<p>Comments: {blog.comments}</p>
-			<button onClick={handleUpdateClick}>Update Blog</button>
-			<button onClick={handleDelete}>Delete</button>
+			{isVisible && 
+				<div>
+					<button onClick={handleUpdateClick}>Update Blog</button>
+					<button onClick={handleDelete}>Delete</button>
+				</div>
+			}
+			
 		</div>
 	);
 };

@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuthContext } from "../hooks/useAuthContext";
+import "./UpdateForm.css";
 
 const UpdateForm = ({ id, initialTitle, initialDescription, initialAuthor, onUpdate }) => {
 	const [blogs, setBlogs] = useState([]);
@@ -53,8 +54,12 @@ const UpdateForm = ({ id, initialTitle, initialDescription, initialAuthor, onUpd
 			<h2>Edit Blog</h2>
 			<label>Blog Title: </label>
 			<input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+			<br />
+
 			<label>Blog body: </label>
-			<textarea value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+			<textarea value={description} rows={4} cols={30} onChange={(e) => setDescription(e.target.value)}></textarea>
+			<br />
+
 			<label>Blog author: </label>
 			<input type="text" value={author} onChange={(e) => setAuthor(e.target.value)} />
 			<button onClick={handleUpdate}>Submit Update</button>
