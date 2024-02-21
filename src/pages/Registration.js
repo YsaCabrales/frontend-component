@@ -12,7 +12,13 @@ const Registration = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		await register(username, password);
+		if(!username || !password) {
+			alert("Please fill in all the details");
+			return;
+		} else {
+			await register(username, password);
+			alert("Account successfully created.");
+		}
 	};
 
 	return (

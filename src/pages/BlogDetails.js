@@ -5,6 +5,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import UpdateForm from "../components/UpdateForm";
+import "./styles/BlogDetails.css";
 
 const BlogDetails = () => {
 	const { dispatch } = useBlogsContext();
