@@ -31,14 +31,14 @@ const Create = () => {
 				Authorization: `Bearer ${user.token}`,
 			},
 		});
-		
 		setIsLoading(true);
+		const json = await response.json();
 
 		if (!response.ok) {
 			setError(json.error);
 		}
 
-		const json = await response.json();
+		// const json = await response.json();
 
 		if (response.ok) {
 			setTitle("");
