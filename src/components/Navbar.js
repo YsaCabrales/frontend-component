@@ -10,7 +10,7 @@ const Navbar = () => {
 
 	const handleClick = () => {
 		logout();
-		
+		alert("Logged out successfully.")
 	};
 
 	return (

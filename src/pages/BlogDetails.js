@@ -37,6 +37,7 @@ const BlogDetails = () => {
 	const handleUpdateDone = () => {
 		setIsVisible(!isVisible);
 		setSelectedBlog(null);
+		alert("Blog updated successfully.")
 		fetchPosts();
 	};
 
@@ -55,6 +56,7 @@ const BlogDetails = () => {
 
 		if (response.ok) {
 			dispatch({ type: "DELETE_BLOG", payload: json });
+			alert("Blog deleted successfully.")
 			navigate("/");
 		}
 	};
