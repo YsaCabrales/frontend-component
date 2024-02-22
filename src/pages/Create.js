@@ -47,6 +47,7 @@ const Create = () => {
 			setError(null);
 			console.log("new blog added");
 			setIsLoading(false);
+			alert("Blog created successfully.")
 			navigate("/");
 		}
 	};
@@ -58,7 +59,7 @@ const Create = () => {
 				<label>Blog Title: </label>
 				<input type="text" required value={title} onChange={(e) => setTitle(e.target.value)} />
 				<label>Blog body: </label>
-				<textarea required value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+				<textarea required rows={4} value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
 				<label>Blog author: </label>
 				<input type="text" required value={author} onChange={(e) => setAuthor(e.target.value)} />
 				{!isLoading && <button>Add Blog</button>}

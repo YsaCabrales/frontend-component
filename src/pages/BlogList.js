@@ -17,7 +17,7 @@ const BlogList = ({ blog }) => {
 	};
 
 	return (
-		<div className="blog-details">
+		<div className="blogs">
 			<Link to={`/posts/${blog._id}`}>
 				<h4 onClick={handleClick} id="blog-title">{blog.title}</h4>
 			</Link>

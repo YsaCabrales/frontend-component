@@ -1,9 +1,21 @@
 .home {
+	text-align: center;
+	width: 95vw;
+	h2 {
+		font-size: 3rem;
+		font-weight: bold;
+		margin-bottom: 2%;
+		padding: 2%;
+		text-decoration: underline;
+	}
 }
 
 .blog-list {
+	text-align: left;
 	display: grid;
-	grid-template: auto auto / 2fr 2fr
+	width: 95vw;
+	grid-template: auto auto / 4fr 4fr 4fr;
+	
 }
 
 .featured-container {
